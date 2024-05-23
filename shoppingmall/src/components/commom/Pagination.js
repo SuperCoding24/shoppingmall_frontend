@@ -44,8 +44,8 @@ const PaginationContainer = styled.div`
 const PageButton = styled.button`
   color: ${(props) => (props.isActive ? "white" : "#858585")};
   background-color: ${(props) => (props.isActive ? "#EB4646" : "#f4f4f4")};
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   border-radius: 5px;
   border: 1px solid #ccc;
   display: flex;
