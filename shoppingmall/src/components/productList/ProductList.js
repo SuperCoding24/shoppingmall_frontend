@@ -82,14 +82,11 @@ const ProductList = () => {
     };
     
     return (
-        
         <ProductListPageWrapper >
             <ProductFilter/>
             <ProductListContainer>
                 {productList.map((product, index) => (
-                    
                         <ProductItem key={index} productsPerRow = { productsPerRow} onClick={() => {clickProduct(product.id)}} >
-                                
                             <ProductImage src={product.image} alt={product.productName}/>
                             <ProductInfoWrapper>
                                 <ProductInfo>
@@ -116,43 +113,42 @@ const ProductList = () => {
 export default ProductList;
 
 const ProductListPageWrapper = styled.div`
+    display: flex;
     width: 1920px;
     hegith: 1080px;
     max-width: 1200px;
     margin: 0 auto;
     margin-top: 99px;
-    display: flex;
     flex-direction: column;
     justify-content:space-around;
     align-items:space-around;
 `;
 
 const ProductListContainer = styled.div`
+    display: flex;    
     width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     margin-left: 6%;
     margin-bottom: 64px;
+    flex-wrap: wrap;
+    justify-content: center;
 `;
 
 const ProductItem = styled.div`
     display: flex;
-    flex-direction: column;
-    padding: 2px;
+    box-sizing: border-box;
+    padding: 0 0;
     margin-right: 30px;
     margin-bottom: 35px;
-    padding: 0 0;
-    box-sizing: border-box;
+    flex-direction: column;
     cursor:pointer;
 `;
 
 const ProductImage = styled.img`
     width: 250px;
     height: 250px;
+    margin-bottom: 10px;
     border-radius: 10px;
     background-color: red;
-    margin-bottom: 10px;
 `;
 
 const ProductInfoWrapper = styled.div`
@@ -166,17 +162,17 @@ const ProductInfoWrapper = styled.div`
 const ProductInfo = styled.div``;
 
 const ProductName = styled.div`
+    margin-bottom: 5px;
     font-size: 17px;
     font-weight: 500;
     line-heigh: 19.36px;
-    margin-bottom: 5px;
 `;
 
 const ProductPrice = styled.div`
+    margin-bottom: 5px;
     font-size: 17px;
     font-weight: 600;
     line-heigh: 16.94px;
-    margin-bottom: 5px;
 `;
 
 const ProductDescription = styled.div`
@@ -186,9 +182,9 @@ const ProductDescription = styled.div`
 `;
 
 const IconWrapper = styled.div`
-    background-color: ${theme.white};
     padding: 0 0;
     margin-right: 10px;
+    background-color: ${theme.white};
 `;
 
 const Icon = styled.img`

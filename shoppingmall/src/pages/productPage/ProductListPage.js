@@ -2,7 +2,6 @@ import React from 'react';
 import ProductList from '../../components/productList/ProductList';
 
 const ProductListPage = () => {
-
     return (
         <>
             <ProductList/>
@@ -11,5 +10,3 @@ const ProductListPage = () => {
 };
 
 export default ProductListPage;
-
-

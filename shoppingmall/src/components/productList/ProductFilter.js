@@ -9,7 +9,6 @@ import ModalComponent from '../modal/ModalComponent';
 import pencil from "../../assets/pencil.svg"
 import categoryDropDown from "../../assets/categoryDropDown.svg";
 
-
 const ProductFilter = () => {
     const navigate = useNavigate();
     const [btnActive, setBtnActive] = useState(1);
@@ -17,7 +16,7 @@ const ProductFilter = () => {
     const [isLogin, setIsLogin] = useState(false);
 
     const closeModal = () => {
-            setIsVisible(false);
+        setIsVisible(false);
     };
     
     const checkLogin = () => {
@@ -83,13 +82,13 @@ const ProductListFilterWrapper = styled.div`
 `;
 
 const LeftWrapper  = styled.div`
-    margin-left: 16%;
     display: flex;
+    margin-left: 16%;
 `;
 
 const ButtonDivs = styled.div`
-    padding: 0 0;
     display: flex;
+    padding: 0 0;
 `;
 
 const Menu = styled.button`
@@ -132,13 +131,13 @@ const RightWrapper = styled.div`
     > button {
         width: 124px;
         height: 40px;
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 16.94px;
         padding-right: 5px;
         margin-bottom: 58px;
         border: none;
         background-color: ${theme.white};
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 16.94px;
         cursor: pointer;
     }
 `;
