@@ -26,7 +26,7 @@ const ProductListPage = () => {
         productName: "아디다스",
         productPrice: "56,000",
         description:
-          "상품 설명 상품 설명 상품 설명 상품 설명",
+          "상품 설명",
       },
       {
         id: 2,
@@ -34,7 +34,7 @@ const ProductListPage = () => {
         productName: "아디다스",
         productPrice: "56,000",
         description:
-          "상품 설명 상품 설명 상품 설명 상품 설명",
+          "상품 설명",
       },
       {
         id: 3,
@@ -42,7 +42,7 @@ const ProductListPage = () => {
         productName: "아디다스",
         productPrice: "56,000",
         description:
-          "상품 설명 상품 설명 상품 설명 상품 설명",
+          "상품 설명",
       },
       {
         id: 4,
@@ -50,7 +50,7 @@ const ProductListPage = () => {
         productName: "아디다스",
         productPrice: "56,000",
         description:
-          "상품 설명 상품 설명 상품 설명 상품 설명",
+          "상품 설명",
       },
       {
         id: 5,
@@ -58,7 +58,7 @@ const ProductListPage = () => {
         productName: "아디다스",
         productPrice: "56,000",
         description:
-          "상품 설명 상품 설명 상품 설명 상품 설명",
+          "상품 설명",
       },
       {
         id: 6,
@@ -66,7 +66,7 @@ const ProductListPage = () => {
         productName: "아디다스",
         productPrice: "56,000",
         description:
-          "상품 설명 상품 설명 상품 설명 상품 설명",
+          "상품 설명",
       },
 
    ]);
@@ -146,20 +146,16 @@ const ProductListPage = () => {
                              
                             <ProductImage src={product.image} alt={product.productName}/>
                             <ProductInfoWrapper>
-                                <div>
-
+                                <ProductInfo>
                                     <ProductName>{product.productName}</ProductName>
                                     <ProductPrice>{product.productPrice + " 원"}</ProductPrice>
                                     <ProductDescription>{product.description}</ProductDescription>
-                                </div>
+                                </ProductInfo>
                                 <IconWrapper onClick={() => {handleHeart(index)}}>
                                         <Icon src={unlike} fill="grayBgColor"/>
                                 </IconWrapper>
                             </ProductInfoWrapper>
-                            
                         </ProductItem>
-                   
-                    
                 ))}     
             </ProductListContainer>
             <Pagination
@@ -186,9 +182,7 @@ const ProductListPageWrapper = styled.div`
     hegith: 1080px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px; 
     margin-top: 99px;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content:space-around;
@@ -197,18 +191,15 @@ const ProductListPageWrapper = styled.div`
 
 const ProductListFilterWrapper = styled.div`
     display: flex;
-    width: 74%;
-    margin-bottom: 62px;
 `;
 
 const LeftWrapper  = styled.div`
-    margin-left: 21%;
+    margin-left: 16%;
     display: flex;
-    justify-content: flex;
 `;
 
 const ButtonDivs = styled.div`
-    width: 100%;
+    padding: 0 0;
     display: flex;
 `;
 
@@ -218,6 +209,7 @@ const Menu = styled.button`
     width: 86px;
     height: 30px;
     margin-right: 11px;
+    margin-bottom: 62px;
     padding: 6px 12px 7px 12px;
     border: 1px solid ${theme.border};
     border-radius: 15px;
@@ -233,9 +225,6 @@ const Menu = styled.button`
 const Selector = styled.select`
     width: 92px;
     height: 30px;
-    margin-left: 5px;
-   
-    border: 1px solid ${theme.border};
     border-radius: 15px;
     text-align: center;
     cursor: pointer;
@@ -248,58 +237,58 @@ const Selector = styled.select`
 
 const RightWrapper = styled.div`
     width: 100%;
-    border: 1px solid black;
-    margin-left: 46%;
+    margin-left: 30%;
     > button {
         width: 124px;
         height: 40px;
-        border: 1px solid ${theme.white};
         font-size: 14px;
         font-weight: 600;
         line-height: 16.94px;
         padding-right: 5px;
-        background-color: ${theme.grayBgColor};
+        margin-bottom: 58px;
+        border: none;
+        background-color: ${theme.white};
         cursor: pointer;
-        
-        > svg {
-            margin-right: 3px;
-            line-height: 16.94px;
-            margin-top: 2px;
-        }
     }
 `;
 
 const ProductListContainer = styled.div`
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    // margin-top: 74px;
-    margin-left: 120px;
-    border: 1px solid red;
+    margin-left: 6%;
+    margin-bottom: 64px;
 `;
 
 const ProductItem = styled.div`
     display: flex;
     flex-direction: column;
     padding: 2px;
-    margin: 10px;
-    margin-right: 8px;
-    // width: calc(100% / ${(props) => props.productsPerRow} - 20px);
+    margin-right: 30px;
+    margin-bottom: 35px;
+    padding: 0 0;
     box-sizing: border-box;
     cursor:pointer;
 `;
 
 const ProductImage = styled.img`
-  width: 250px;
-  height: 250px;
-  border-radius: 10px;
-  background-color: red;
-  margin-bottom: 10px;
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    background-color: red;
+    margin-bottom: 10px;
 `;
 
 const ProductInfoWrapper = styled.div`
+    width: 250px;
+    height: 58px;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 `;
+
+const ProductInfo = styled.div``;
 
 const ProductName = styled.div`
     font-size: 17px;
@@ -322,91 +311,10 @@ const ProductDescription = styled.div`
 `;
 
 const IconWrapper = styled.div`
-    padding: 10px;
-    height: 100%
-    background-color: ${theme.grayBgColor};
+    background-color: ${theme.white};
+    padding: 0 0;
 `;
 
 const Icon = styled.img`
-    background-color: ${(props) => (props.isActive ? "#EB4646" : "#f4f4f4")};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-`;
-
-const PaginationContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-`;
-
-const PageButton = styled.button`
-  color: ${(props) => (props.isActive ? "white" : "#858585")};
-  background-color: ${(props) => (props.isActive ? "#EB4646" : "#f4f4f4")};
-  width: 45px;
-  height: 45px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px;
-  cursor: pointer;
-  &:hover {
-    background-color: #eb4646;
-    color: white;
-  }
-`;
-
-const ArrowIcon = styled.div`
-  width: 10px;
-  height: 18px;
-  &:hover {
-    background-color: #eb4646;
-    color: white;
-  }
+    background-color: ${(props) => (props.isChecked ? "#EB4646" : "#f4f4f4")};
 `;

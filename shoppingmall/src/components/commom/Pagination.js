@@ -38,7 +38,7 @@ const PaginationContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin-bottom: 26px;
 `;
 
 const PageButton = styled.button`
