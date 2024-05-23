@@ -204,18 +204,18 @@ const ButtonDivs = styled.div`
 `;
 
 const Menu = styled.button`
-    background-color:  ${props => (props.isActive ? "#EB4646" : "")};
-    color:  ${props => (props.isActive ? "#FFFFFF" : "#000000")};
-    width: 86px;
+    width: 92px;
     height: 30px;
     margin-right: 11px;
     margin-bottom: 62px;
     padding: 6px 12px 7px 12px;
     border: 1px solid ${theme.border};
     border-radius: 15px;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: bold;
     cursor: pointer;
+    background-color:  ${props => (props.isActive ? "#EB4646" : "")};
+    color:  ${props => (props.isActive ? "#FFFFFF" : "#000000")};
     &:hover {
         background-color: ${theme.grayBgColor};
         color: ${theme.black};
@@ -227,8 +227,10 @@ const Selector = styled.select`
     height: 30px;
     border-radius: 15px;
     text-align: center;
+    font-weight: bold;
     cursor: pointer;
     > option {
+        font-weight: bold;
         &:hover {
             background-color: ${theme.grayBgColor};
         }
@@ -237,7 +239,7 @@ const Selector = styled.select`
 
 const RightWrapper = styled.div`
     width: 100%;
-    margin-left: 30%;
+    margin-left: 27%;
     > button {
         width: 124px;
         height: 40px;
