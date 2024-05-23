@@ -14,9 +14,17 @@ const ProductFilter = () => {
     const [btnActive, setBtnActive] = useState(1);
     const [isVisible, setIsVisible] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
+    const [selected, setSelected] = useState("전체");
+
+    const selectList = [
+        {value:"all", name: "전체"},
+        {value: "cloth", name: "의류"},
+        {value: "home", name: "가전"},
+        {value: "digital", name: "디지털"},
+    ];
 
     const closeModal = () => {
-        setIsVisible(false);
+            setIsVisible(false);
     };
     
     const checkLogin = () => {
@@ -52,11 +60,16 @@ const ProductFilter = () => {
                         가격 높은순    
                     </Menu>
                 </ButtonDivs>
-                <Selector name="category" src={categoryDropDown}>
-                    <option value="cloth">의류</option>
-                    <option value="home">가전</option>
-                    <option value="digital">디지털</option>
-                </Selector>
+                <div>
+                    <label for="category"></label>
+                    <Selector name="categories" id="category" src={categoryDropDown}>
+                        {selectList.map((item) => {
+                            return <option value={item.value} key={item.value}>
+                                {item.name}    
+                                </option>;
+                        })}
+                    </Selector>
+                </div>
             </LeftWrapper>
             <RightWrapper>
                 <button onClick={checkLogin}>상품 등록 &nbsp;
@@ -117,6 +130,7 @@ const Selector = styled.select`
     text-align: center;
     font-weight: bold;
     cursor: pointer;
+    fill: ${theme.grayBgColor};
     > option {
         font-weight: bold;
         &:hover {
@@ -127,21 +141,23 @@ const Selector = styled.select`
 
 const RightWrapper = styled.div`
     width: 100%;
-    margin-left: 27%;
+    margin-left: 24%;
     > button {
-        width: 124px;
+        width: 120px;
         height: 40px;
         padding-right: 5px;
         margin-bottom: 58px;
-        border: none;
-        background-color: ${theme.white};
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 16.94px;
+        border: 1px solid #D1D4D8;
+        border-radius: 15px;
+        font-weight: bold;
         cursor: pointer;
+        background-color: ${theme.white};
     }
 `;
 
 const Icon = styled.img`
-    background-color: ${(props) => (props.isChecked ? "#EB4646" : "#f4f4f4")};
+   display: inline-block;
+   width: 20px;
+   height:14px;
+   marigin-right:10px;
 `;
