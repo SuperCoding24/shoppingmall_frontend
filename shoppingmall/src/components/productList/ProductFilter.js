@@ -1,0 +1,148 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { theme } from "../../style/theme";
+import styled from 'styled-components';
+import ModalComponent from '../modal/ModalComponent';
+
+// svg
+import pencil from "../../assets/pencil.svg"
+import categoryDropDown from "../../assets/categoryDropDown.svg";
+
+
+const ProductFilter = () => {
+    const navigate = useNavigate();
+    const [btnActive, setBtnActive] = useState(1);
+    const [isVisible, setIsVisible] = useState(false);
+    const [isLogin, setIsLogin] = useState(false);
+
+    const closeModal = () => {
+            setIsVisible(false);
+    };
+    
+    const checkLogin = () => {
+        if (isLogin === true) {
+            navigate("/PR");
+            setIsVisible(false);
+        } else {
+            setIsVisible(true);
+        }
+    };
+
+    const handleClickButton = idx => {
+        setBtnActive(idx);
+    };
+    
+    return (
+        <ProductListFilterWrapper>
+            <LeftWrapper>
+                <ButtonDivs>
+                    <Menu 
+                        onClick={() => handleClickButton(0)}
+                        isActive={btnActive === 0}>
+                        추천순    
+                    </Menu>
+                    <Menu 
+                        onClick={() => handleClickButton(1)}
+                        isActive={btnActive === 1}>
+                        가격 낮은순    
+                    </Menu>
+                    <Menu 
+                        onClick={() => handleClickButton(2)}
+                        isActive={btnActive === 2}>
+                        가격 높은순    
+                    </Menu>
+                </ButtonDivs>
+                <Selector name="category" src={categoryDropDown}>
+                    <option value="cloth">의류</option>
+                    <option value="home">가전</option>
+                    <option value="digital">디지털</option>
+                </Selector>
+            </LeftWrapper>
+            <RightWrapper>
+                <button onClick={checkLogin}>상품 등록 &nbsp;
+                        <Icon src={pencil}/>
+                </button>
+            </RightWrapper>
+
+            {isVisible && (
+                <ModalComponent 
+                    title="로그인이 필요한 기능입니다." 
+                    subText="로그인 페이지로 이동하시겠습니까?" 
+                    urlPath="/login" 
+                    isClosed={closeModal}/>
+                )}     
+        </ProductListFilterWrapper>
+    );
+};
+
+export default ProductFilter;
+
+const ProductListFilterWrapper = styled.div`
+    display: flex;
+`;
+
+const LeftWrapper  = styled.div`
+    margin-left: 16%;
+    display: flex;
+`;
+
+const ButtonDivs = styled.div`
+    padding: 0 0;
+    display: flex;
+`;
+
+const Menu = styled.button`
+    width: 92px;
+    height: 30px;
+    margin-right: 11px;
+    margin-bottom: 62px;
+    padding: 6px 12px 7px 12px;
+    border: 1px solid ${theme.border};
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color:  ${props => (props.isActive ? "#EB4646" : "")};
+    color:  ${props => (props.isActive ? "#FFFFFF" : "#000000")};
+    &:hover {
+        background-color: ${theme.grayBgColor};
+        color: ${theme.black};
+      }
+`;
+
+const Selector = styled.select`
+    width: 92px;
+    height: 30px;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    > option {
+        font-weight: bold;
+        &:hover {
+            background-color: ${theme.grayBgColor};
+        }
+    }
+`;
+
+const RightWrapper = styled.div`
+    width: 100%;
+    margin-left: 27%;
+    > button {
+        width: 124px;
+        height: 40px;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 16.94px;
+        padding-right: 5px;
+        margin-bottom: 58px;
+        border: none;
+        background-color: ${theme.white};
+        cursor: pointer;
+    }
+`;
+
+const Icon = styled.img`
+    background-color: ${(props) => (props.isChecked ? "#EB4646" : "#f4f4f4")};
+`;
