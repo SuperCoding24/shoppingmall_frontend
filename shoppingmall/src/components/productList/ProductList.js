@@ -8,10 +8,6 @@ import ProductFilter from './ProductFilter';
 import unlike from "../../assets/unlike.svg";
 const ProductList = () => {
     const navigate = useNavigate();
-    const productsPerRow = 3;
-    const pages = [1, 2, 3, 4, 5];
-    const [isChecked, setIsLike] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
 
     const [productList, setProductList] = useState([
         {
@@ -80,9 +76,13 @@ const ProductList = () => {
           },
        ]);
 
+    const productsPerRow = 4;   
+    const pages = [1, 2, 3, 4, 5];
+    const [isChecked, setIsLike] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);   
+
     const onPageChange = (page) => {
         setCurrentPage(page);
-        console.log(`Page changed to ${page}`);
     };
 
     const clickProduct = (id) => {
@@ -135,7 +135,6 @@ const ProductListPageWrapper = styled.div`
     hegith: 1080px;
     max-width: 1000px;
     margin: 0 auto;
-    margin-top: 40px;
     flex-direction: column;
     justify-content:space-around;
     align-items:space-around;
@@ -144,9 +143,7 @@ const ProductListPageWrapper = styled.div`
 const ProductListContainer = styled.div`
     display: flex;    
     width: 800px;
-    margin-left: 10%;
-    margin-top: 40px;
-    margin-bottom: 64px;
+    margin: 40px 0px 64px 100px;
     flex-wrap: wrap;
     justify-content: space-between;
 `;
@@ -156,8 +153,7 @@ const ProductItem = styled.div`
     box-sizing: border-box;
     width: 142px;
     padding: 0 0;
-    margin-right: 32px;
-    margin-bottom: 24px;
+    margin: 0px 32px 24px 0px;
     flex-direction: column;
     cursor:pointer;
 `;

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { theme } from "../../style/theme";
 import styled from 'styled-components';
 import ModalComponent from '../modal/ModalComponent';
@@ -93,6 +92,7 @@ export default ProductFilter;
 
 const ProductListFilterWrapper = styled.div`
     display: flex;
+    margin-top: 42px;
 `;
 
 const ButtonWrapper  = styled.div`
@@ -138,8 +138,7 @@ const CategoryButton = styled.button`
 `;
 
 const CategoryIcon = styled.img`
-    margin-bottom: 1px;
-    margin-left: 4px;
+    margin: 0px 0px 1px 4px;
 `;
 
 const Options = styled.div`
@@ -151,7 +150,7 @@ const ItemAddButton = styled.button`
     height: 45px;
     padding-right: 5px;
     margin-left: 240px;
-    border: 1px solid #D1D4D8;
+    border: 1px solid ${theme.border};
     border-radius: 15px;
     font-size:14px;
     font-weight: bold;
