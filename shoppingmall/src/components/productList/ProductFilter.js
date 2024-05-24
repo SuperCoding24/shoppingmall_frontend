@@ -7,7 +7,7 @@ import ModalComponent from '../modal/ModalComponent';
 
 // svg
 import pencil from "../../assets/pencil.svg"
-import categoryDropDown from "../../assets/categoryDropDown.svg";
+import categorydropdown from "../../assets/categorydropdown.svg";
 
 const ProductFilter = () => {
     const navigate = useNavigate();
@@ -61,14 +61,12 @@ const ProductFilter = () => {
                     </Menu>
                 </ButtonDivs>
                 <div>
-                    <label for="category"></label>
-                    <Selector name="categories" id="category" src={categoryDropDown}>
-                        {selectList.map((item) => {
-                            return <option value={item.value} key={item.value}>
-                                {item.name}    
-                                </option>;
-                        })}
-                    </Selector>
+                    <label for="category">
+                        <CategoryButton>카테고리 
+                            <CategoryIcon src={categorydropdown} />
+                        </CategoryButton>
+                    </label>
+                   
                 </div>
             </LeftWrapper>
             <RightWrapper>
@@ -123,32 +121,33 @@ const Menu = styled.button`
       }
 `;
 
-const Selector = styled.select`
-    width: 92px;
-    height: 30px;
-    border-radius: 15px;
-    text-align: center;
-    font-weight: bold;
-    cursor: pointer;
-    fill: ${theme.grayBgColor};
-    > option {
-        font-weight: bold;
-        &:hover {
-            background-color: ${theme.grayBgColor};
-        }
-    }
+const CategoryButton = styled.button`
+      width: 92px;
+      height: 30px;
+      border: 1px solid ${theme.border};
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: ${theme.white};
 `;
+
+const CategoryIcon = styled.img`
+      margin-bottom: 1px;
+`;
+
 
 const RightWrapper = styled.div`
     width: 100%;
     margin-left: 24%;
     > button {
-        width: 120px;
-        height: 40px;
+        width: 123px;
+        height: 42px;
         padding-right: 5px;
-        margin-bottom: 58px;
+        margin-bottom: 56px;
         border: 1px solid #D1D4D8;
         border-radius: 15px;
+        font-size:14px;
         font-weight: bold;
         cursor: pointer;
         background-color: ${theme.white};
@@ -156,8 +155,9 @@ const RightWrapper = styled.div`
 `;
 
 const Icon = styled.img`
-   display: inline-block;
-   width: 20px;
-   height:14px;
-   marigin-right:10px;
+   height: 14px;
+   maring-top: 2px;
+//    padding-top:3px;
+//    border: 1px solid red;
+   
 `;
