@@ -15,7 +15,6 @@ const ProductFilter = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
     const [selected, setSelected] = useState("전체");
-
     const selectList = [
         {value:"all", name: "전체"},
         {value: "cloth", name: "의류"},
@@ -118,24 +117,24 @@ const Menu = styled.button`
     &:hover {
         background-color: ${theme.grayBgColor};
         color: ${theme.black};
-      }
+    }
 `;
 
 const CategoryButton = styled.button`
-      width: 92px;
-      height: 30px;
-      border: 1px solid ${theme.border};
-      border-radius: 15px;
-      font-size: 12px;
-      font-weight: bold;
-      cursor: pointer;
-      background-color: ${theme.white};
+    width: 92px;
+    height: 30px;
+    border: 1px solid ${theme.border};
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: ${theme.white};
 `;
 
 const CategoryIcon = styled.img`
-      margin-bottom: 1px;
+    margin-bottom: 1px;
+    margin-left: 4px;
 `;
-
 
 const RightWrapper = styled.div`
     width: 100%;
@@ -157,7 +156,4 @@ const RightWrapper = styled.div`
 const Icon = styled.img`
    height: 14px;
    maring-top: 2px;
-//    padding-top:3px;
-//    border: 1px solid red;
-   
 `;
