@@ -14,12 +14,13 @@ const ProductFilter = () => {
     const [btnActive, setBtnActive] = useState(1);
     const [isVisible, setIsVisible] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
+    const [isDropdownToggled, setDropdownToggled] = useState(false);
     const [selected, setSelected] = useState("전체");
     const selectList = [
-        {value:"all", name: "전체"},
-        {value: "cloth", name: "의류"},
-        {value: "home", name: "가전"},
-        {value: "digital", name: "디지털"},
+        {id:1, value:"all",      name: "전체"},
+        {id:2, value: "cloth",   name: "의류"},
+        {id:3, value: "home",    name: "가전"},
+        {id:4, value: "digital", name: "디지털"},
     ];
 
     const closeModal = () => {
@@ -38,10 +39,11 @@ const ProductFilter = () => {
     const handleClickButton = idx => {
         setBtnActive(idx);
     };
+
     
     return (
         <ProductListFilterWrapper>
-            <LeftWrapper>
+            <ButtonWrapper>
                 <ButtonDivs>
                     <Menu 
                         onClick={() => handleClickButton(0)}
@@ -58,22 +60,24 @@ const ProductFilter = () => {
                         isActive={btnActive === 2}>
                         가격 높은순    
                     </Menu>
+                    <CategoryButton onCLick={() => {
+                        setDropdownToggled(true)
+                    }}>
+                        카테고리 
+                    <CategoryIcon src={categorydropdown} />
+                    </CategoryButton>
+                    <Options active={isDropdownToggled}>
+                        {
+                            selectList.map((option, index) => {
+                            return <button>{option.name}</button>
+                            })
+                        }
+                    </Options>
                 </ButtonDivs>
-                <div>
-                    <label for="category">
-                        <CategoryButton>카테고리 
-                            <CategoryIcon src={categorydropdown} />
-                        </CategoryButton>
-                    </label>
-                   
-                </div>
-            </LeftWrapper>
-            <RightWrapper>
-                <button onClick={checkLogin}>상품 등록 &nbsp;
-                        <Icon src={pencil}/>
-                </button>
-            </RightWrapper>
-
+                <ItemAddButton onClick={checkLogin}>상품 등록 &nbsp;
+                    <Icon src={pencil}/>
+                </ItemAddButton>
+            </ButtonWrapper>
             {isVisible && (
                 <ModalComponent 
                     title="로그인이 필요한 기능입니다." 
@@ -91,9 +95,12 @@ const ProductListFilterWrapper = styled.div`
     display: flex;
 `;
 
-const LeftWrapper  = styled.div`
+const ButtonWrapper  = styled.div`
     display: flex;
-    margin-left: 16%;
+    width: 800px;
+    height: 50px;
+    margin-left: 10%;
+    justify-content: flex-start;
 `;
 
 const ButtonDivs = styled.div`
@@ -105,7 +112,6 @@ const Menu = styled.button`
     width: 92px;
     height: 30px;
     margin-right: 11px;
-    margin-bottom: 62px;
     padding: 6px 12px 7px 12px;
     border: 1px solid ${theme.border};
     border-radius: 15px;
@@ -136,21 +142,21 @@ const CategoryIcon = styled.img`
     margin-left: 4px;
 `;
 
-const RightWrapper = styled.div`
-    width: 100%;
-    margin-left: 24%;
-    > button {
-        width: 123px;
-        height: 42px;
-        padding-right: 5px;
-        margin-bottom: 56px;
-        border: 1px solid #D1D4D8;
-        border-radius: 15px;
-        font-size:14px;
-        font-weight: bold;
-        cursor: pointer;
-        background-color: ${theme.white};
-    }
+const Options = styled.div`
+    display:  ${props => (props.active ? "visible" : "none")};
+`;
+
+const ItemAddButton = styled.button`
+    width: 123px;
+    height: 45px;
+    padding-right: 5px;
+    margin-left: 240px;
+    border: 1px solid #D1D4D8;
+    border-radius: 15px;
+    font-size:14px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: ${theme.white};
 `;
 
 const Icon = styled.img`

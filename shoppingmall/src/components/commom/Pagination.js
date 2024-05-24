@@ -23,9 +23,7 @@ const Pagination = ({ pages, currentPage, onPageChange }) => {
         onClick={() =>
           onPageChange(
             currentPage < pages.length ? currentPage + 1 : pages.length
-          )
-        }
-      >
+          )}>
         <ArrowIcon src={LeftArrowIcon} alt="Next" flipped />
       </PageButton>
     </PaginationContainer>
