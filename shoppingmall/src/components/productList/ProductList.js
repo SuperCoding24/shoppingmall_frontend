@@ -135,7 +135,7 @@ const ProductListPageWrapper = styled.div`
     hegith: 1080px;
     max-width: 1000px;
     margin: 0 auto;
-    margin-top: 38px;
+    margin-top: 40px;
     flex-direction: column;
     justify-content:space-around;
     align-items:space-around;
@@ -145,7 +145,7 @@ const ProductListContainer = styled.div`
     display: flex;    
     width: 800px;
     margin-left: 10%;
-    margin-top: 16px;
+    margin-top: 40px;
     margin-bottom: 64px;
     flex-wrap: wrap;
     justify-content: space-between;
