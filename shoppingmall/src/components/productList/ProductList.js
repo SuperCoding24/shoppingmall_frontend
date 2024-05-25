@@ -12,7 +12,7 @@ const ProductList = () => {
     const [productList, setProductList] = useState([
         {
             id: 1,
-            image: "https://via.placeholder.com/140/#D9D9D9",
+            image: "https://via.placeholder.com/150/#D9D9D9",
             productName: "아디다스",
             productPrice: "56,000",
             description:
@@ -20,7 +20,7 @@ const ProductList = () => {
           },
           {
             id: 2,
-            image: "https://via.placeholder.com/140/#D9D9D9",
+            image: "https://via.placeholder.com/150/#D9D9D9",
             productName: "아디다스",
             productPrice: "56,000",
             description:
@@ -28,7 +28,7 @@ const ProductList = () => {
           },
           {
             id: 3,
-            image: "https://via.placeholder.com/140/#D9D9D9",
+            image: "https://via.placeholder.com/150/#D9D9D9",
             productName: "아디다스",
             productPrice: "56,000",
             description:
@@ -36,7 +36,7 @@ const ProductList = () => {
           },
           {
             id: 4,
-            image: "https://via.placeholder.com/140/#D9D9D9",
+            image: "https://via.placeholder.com/150/#D9D9D9",
             productName: "아디다스",
             productPrice: "56,000",
             description:
@@ -44,7 +44,7 @@ const ProductList = () => {
           },
           {
             id: 5,
-            image: "https://via.placeholder.com/140/#D9D9D9",
+            image: "https://via.placeholder.com/150/#D9D9D9",
             productName: "아디다스",
             productPrice: "56,000",
             description:
@@ -52,7 +52,7 @@ const ProductList = () => {
           },
           {
             id: 6,
-            image: "https://via.placeholder.com/140/#D9D9D9",
+            image: "https://via.placeholder.com/150/#D9D9D9",
             productName: "아디다스",
             productPrice: "56,000",
             description:
@@ -60,7 +60,7 @@ const ProductList = () => {
           },
           {
             id: 7,
-            image: "https://via.placeholder.com/140/#D9D9D9",
+            image: "https://via.placeholder.com/150/#D9D9D9",
             productName: "아디다스",
             productPrice: "56,000",
             description:
@@ -68,7 +68,7 @@ const ProductList = () => {
           },
           {
             id: 8,
-            image: "https://via.placeholder.com/140/#D9D9D9",
+            image: "https://via.placeholder.com/150/#D9D9D9",
             productName: "아디다스",
             productPrice: "56,000",
             description:
@@ -159,15 +159,15 @@ const ProductItem = styled.div`
 `;
 
 const ProductImage = styled.img`
-    width: 140px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
     padding-bottom: 7px;
     border-radius: 10px;
 `;
 
 const ProductInfoWrapper = styled.div`
     display: flex;
-    width: 140px;
+    width: 150px;
     height: 58px;
     flex-direction: row;
     justify-content: space-between;
