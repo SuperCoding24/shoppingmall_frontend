@@ -10,7 +10,7 @@ import categorydropdown from "../../assets/categorydropdown.svg";
 
 const ProductFilter = () => {
     const navigate = useNavigate();
-    const [btnActive, setBtnActive] = useState(1);
+    const [btnActive, setBtnActive] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
     const [isDropdownToggled, setDropdownToggled] = useState(false);
@@ -118,12 +118,12 @@ const Menu = styled.button`
     font-size: 12px;
     font-weight: bold;
     cursor: pointer;
-    background-color:  ${props => (props.isActive ? "#EB4646" : "")};
+    background-color:  ${props => (props.isActive ? "#EB4646" : "#FFFFFF")};
     color:  ${props => (props.isActive ? "#FFFFFF" : "#000000")};
-    &:hover {
-        background-color: ${theme.grayBgColor};
-        color: ${theme.black};
-    }
+    // &:hover {
+    //     background-color: ${theme.grayBgColor};
+    //     color: ${theme.black};
+    // }
 `;
 
 const CategoryButton = styled.button`
