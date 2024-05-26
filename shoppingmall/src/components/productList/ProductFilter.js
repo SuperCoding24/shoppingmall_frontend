@@ -12,6 +12,7 @@ const ProductFilter = () => {
     const navigate = useNavigate();
     const [btnActive, setBtnActive] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
+    const [isHover, setIsHover] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
     const [isDropdownToggled, setDropdownToggled] = useState(false);
     const [selected, setSelected] = useState("전체");
@@ -56,7 +57,7 @@ const ProductFilter = () => {
                     </Menu>
                     <Menu 
                         onClick={() => handleClickButton(2)}
-                        isActive={btnActive === 2}>
+                        isActive={btnActive === 2} isH>
                         가격 높은순    
                     </Menu>
                     <CategoryButton onCLick={() => {
@@ -72,10 +73,13 @@ const ProductFilter = () => {
                             })
                         }
                     </Options>
+                    <WriteButtonWrapper>
+                        <ItemAddButton onClick={checkLogin}>상품 등록</ItemAddButton>
+                        <Icon src={pencil}/>
+                    </WriteButtonWrapper>
+                   
                 </ButtonDivs>
-                <ItemAddButton onClick={checkLogin}>상품 등록 &nbsp;
-                    <Icon src={pencil}/>
-                </ItemAddButton>
+                
             </ButtonWrapper>
             {isVisible && (
                 <ModalComponent 
@@ -120,10 +124,10 @@ const Menu = styled.button`
     cursor: pointer;
     background-color:  ${props => (props.isActive ? "#EB4646" : "#FFFFFF")};
     color:  ${props => (props.isActive ? "#FFFFFF" : "#000000")};
-    // &:hover {
-    //     background-color: ${theme.grayBgColor};
-    //     color: ${theme.black};
-    // }
+    &:hover {
+        background-color: ${props => (props.isActive ? "#EB4646" : "#F4F4F4" )};
+        color: ${props => (props.isActive ? "#FFFFFF" : "#000000")};
+    }
 `;
 
 const CategoryButton = styled.button`
@@ -145,20 +149,37 @@ const Options = styled.div`
     display:  ${props => (props.active ? "visible" : "none")};
 `;
 
+const WriteButtonWrapper = styled.div`
+    display: flex;
+    width: 130px;
+    height:40px;
+    margin-left: 280px;
+    margin-top: 9px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+`;
+
+
 const ItemAddButton = styled.button`
-    width: 123px;
-    height: 45px;
-    padding-right: 5px;
-    margin-left: 240px;
-    border: 1px solid ${theme.border};
-    border-radius: 15px;
+    display: flex;
+    justify-content: flex-start;
+    height: 17.5px;
+    margin-bottom:2px;
+    margin-right: 7px;
+    padding:0 0;
+    border: none;
     font-size:14px;
     font-weight: bold;
-    cursor: pointer;
+    line-height: 16.94px;
     background-color: ${theme.white};
+    cursor: pointer;
 `;
 
 const Icon = styled.img`
-   height: 14px;
+   width: 17px;
+   height: 17.5px;
    maring-top: 2px;
+   color: #858585;
+   cursor: pointer;
 `;
