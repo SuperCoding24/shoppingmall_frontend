@@ -35,6 +35,8 @@ const ProductDetail = () => {
     const {productId, productName, price, description, userNickName} = productItem;
     const productImages = productItem.imagePaths;
 
+    let productPrice = (price+"").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')  + " 원";
+
     return (
         <Layout>
             <Wrapper className="wrapper">
@@ -67,7 +69,7 @@ const ProductDetail = () => {
                                 <Line></Line>
                                 <DetailWrapper className="DetailWrapper">
                                     <ProductName className="ProductName">{productName}</ProductName>
-                                    <ProductPrice className="ProductPrice">{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')  + " 원"}</ProductPrice>
+                                    <ProductPrice className="ProductPrice">{productPrice}</ProductPrice>
                                     <Description className="Description">
                                         {description}
                                     </Description>
