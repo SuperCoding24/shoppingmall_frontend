@@ -9,20 +9,22 @@ import ItemFilter from "./ItemFilter";
 import unlike from "../../assets/unlike.svg";
 const ItemList = () => {
   const navigate = useNavigate();
+  const productsPerRow = 5;
+  const pages = [1, 2, 3, 4, 5];
+  const [currentPage, setCurrentPage] = useState(0);
+  const [sort, setSort] = useState("asc");
 
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/product`)
+    fetch(`${process.env.REACT_APP_API_URL}/product?page=${currentPage}&sort=${sort}`)
       .then((response) => response.json())
       .then((json) => {
         setProductList([...json]);
       })
   }, []);
 
-  const productsPerRow = 5;
-  const pages = [1, 2, 3, 4, 5];
-  const [currentPage, setCurrentPage] = useState(1);
+  
 
   const onPageChange = (page) => {
     setCurrentPage(page);
