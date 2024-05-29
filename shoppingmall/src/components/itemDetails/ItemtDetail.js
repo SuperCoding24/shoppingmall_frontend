@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState , useEffect } from 'react';
+import { useLocation , useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { BlackBtn, WhiteBtn } from "../../style/CommonStyles";
+import { BlackBtn } from "../../style/CommonStyles";
 
 // svg
 import leftarrow from "../../assets/leftarrow.svg";
 import profile from "../../assets/profile.svg";
 import unlike from "../../assets/unlike.svg";
+import Modal from '../commom/Modal/Modal';
 
 const ProductDetail = () => {
+   const navigate = useNavigate();
    const location = useLocation();
    const pId = location.state.productId;
    const [productItem, setProductItem] = useState({});
+   const [isVisible, setIsVisible] = useState(false);
+   const [loginStatus, setLoginStatus] = useState(true);
+   const [navigateUrl, setNavigateUrl] = useState("/login");
+   
+   const closeModal = () => {
+        setIsVisible(false);
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -37,49 +45,89 @@ const ProductDetail = () => {
 
     let productPrice = (price+"").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')  + " 원";
 
+    const putOnCart = () => {
+        console.log("장바구니추가 버튼 클릭");
+        // 로그인 여부 검사
+        // 1. 로그인이 되어있지 않을때 팝업창을 띄운다
+        // 2. 로그인이 되어있을때 Post 요청을 보낸다
+        let loginToken = localStorage.getItem("login-token");
+        if (loginToken == "" || loginToken == null || loginToken == undefined || ( loginToken != null && typeof loginToken == "object" && !Object.keys(loginToken).length)) {
+            setLoginStatus(false);
+            setIsVisible(true);
+            console.log("로그인 안되있음: ", loginStatus, isVisible);
+        } else {
+            setLoginStatus(true);
+            setNavigateUrl("/cart");
+            console.log("로그인 되있음");
+            console.log("장바구니 추가 로직 작성");
+        }
+    };
+
+    const navigateToPage = () => {
+        navigate(navigateUrl);
+    };
+
     return (
         <Layout>
-            <Wrapper className="wrapper">
-                <Nav className="nav">
-                    <IconWrapper className="IconWrapper">
+            <Wrapper>
+                <Nav>
+                    <IconWrapper>
                        <img src={leftarrow}/> 
                     </IconWrapper>
                     <Title className="title">
                         상품 정보    
                     </Title>
                 </Nav>
-                <Content className="content">
-                    <ContentWrapper className="ContentWrapper">
-                        <LeftContainer className="leftContainer">
-                            <CarouselContainer className="CarouselContainer">
+                <Content>
+                    <ContentWrapper>
+                        <LeftContainer>
+                            <CarouselContainer>
                                 <img src="https://via.placeholder.com/250/#D9D9D9"/>
                             </CarouselContainer>
                         </LeftContainer>
-                        <RightContainer className="rightContainer">
-                            <InfoWrapper className="InfoWrapper">
-                                <UserWrapper className="UserWrapper">
-                                    <UserLeftWrapper className="UserLeftWrapper">
+                        <RightContainer>
+                            <InfoWrapper>
+                                <UserWrapper>
+                                    <UserLeftWrapper>
                                         <img src={profile}/>
-                                        <UserName className="UserName">{userNickName}</UserName>
+                                        <UserName>
+                                            {userNickName}
+                                        </UserName>
                                     </UserLeftWrapper>
-                                    <HeartWrapper className="HeartWrapper">
+                                    <HeartWrapper>
                                         <img src={unlike}/>
                                     </HeartWrapper>
                                 </UserWrapper>
                                 <Line></Line>
-                                <DetailWrapper className="DetailWrapper">
-                                    <ProductName className="ProductName">{productName}</ProductName>
-                                    <ProductPrice className="ProductPrice">{productPrice}</ProductPrice>
-                                    <Description className="Description">
+                                <DetailWrapper>
+                                    <ProductName>
+                                        {productName}
+                                    </ProductName>
+                                    <ProductPrice>
+                                        {productPrice}
+                                    </ProductPrice>
+                                    <Description>
                                         {description}
                                     </Description>
-                                    <Option className="Option">#옵션 #옵션</Option>
+                                    <Option>
+                                        #옵션 #옵션
+                                    </Option>
                                 </DetailWrapper>
                             </InfoWrapper>
                         </RightContainer>
                     </ContentWrapper>
                 </Content>
-                <CartButton className="CartButton">장바구니담기</CartButton>
+                <CartButton onClick={putOnCart}>
+                    장바구니담기
+                </CartButton>
+                {isVisible  && (
+                <Modal
+                    open={isVisible} 
+                    onClose={closeModal} 
+                    title="로그인이 필요한 기능입니다." 
+                    subText="로그인 페이지로 이동하시겠습니까?" 
+                    navigateToPage={navigateToPage}/>
+                )}
             </Wrapper>
         </Layout>
     );
@@ -121,7 +169,7 @@ const Content = styled.div`
 const IconWrapper = styled.div`
     width: 24px;
     height: 24px;
-    margin-left: 170px;
+    margin-left: 146px;
 `;
 
 const Title = styled.div`
