@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import ModifyIcon from "../../assets/Modify.svg";
+import ModifyIcon from "../../assets/modify.svg";
 import ModifyHIcon from "../../assets/modifyh.svg";
 
 const ProductArea = () => {
