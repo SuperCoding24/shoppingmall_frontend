@@ -24,7 +24,8 @@ function App() {
       <AppLayout>
         <Routes>
           <Route path="/settings" element={<MyPage />} />
-          <Route path="/product" element={<ItemListPage/>} />
+          <Route path="/" element={<ItemListPage/>} />
+          {/* <Route path="/product" element={<ItemListPage/>} /> */}
           <Route path="/write" element={<Write />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
