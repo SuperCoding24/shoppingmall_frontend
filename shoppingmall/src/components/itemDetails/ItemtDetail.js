@@ -40,7 +40,7 @@ const ProductDetail = () => {
         fetchData();
     }, productItem);
 
-    const {productId, productName, price, description, userNickName} = productItem;
+    const {productName, price, description, userNickName} = productItem;
     const productImages = productItem.imagePaths;
 
     let productPrice = (price+"").toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')  + " 원";
