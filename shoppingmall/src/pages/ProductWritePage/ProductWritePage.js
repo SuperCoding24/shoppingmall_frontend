@@ -5,7 +5,7 @@ import ContentLayout from "../../components/commom/ContentLayout";
 const ProductRegistrationPage = () => {
   return (
     <ContentLayout title={"상품 등록"} width="1060px">
-      <ProductComponent Route={"상품 등록"} />
+      <ProductComponent event="0" />
     </ContentLayout>
   );
 };
