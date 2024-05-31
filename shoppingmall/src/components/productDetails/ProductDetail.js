@@ -127,7 +127,7 @@ const ProductDetail = () => {
             </RightContainer>
           </ContentWrapper>
         </Content>
-        <CartButton onClick={putOnCart}>장바구니 추가</CartButton>
+        <CartButton onClick={putOnCart}>장바구니 담기</CartButton>
         {isVisible && (
           <Modal
             onClose = {closeModal}
