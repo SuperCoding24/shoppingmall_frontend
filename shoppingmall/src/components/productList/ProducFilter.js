@@ -14,12 +14,12 @@ const ProducFilter = ( {setSort }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const closeModal = () => {
-    setIsVisible(false);
+    setIsVisible(true);
   };
 
   const checkLogin = () => {
     const loginToken = localStorage.getItem("login_token");
-    if (loginToken !== null) {
+    if (loginToken === null) {
         setIsVisible(true);
     } else {
       navigate("/write");
@@ -62,11 +62,11 @@ const ProducFilter = ( {setSort }) => {
       </RightButtons>
       {isVisible && (
         <Modal
-          open={isVisible}
-          onClose={closeModal}
-          title="로그인이 필요한 기능입니다."
-          subText="로그인 페이지로 이동하시겠습니까?"
-          navigateToPage={navigateToPage}
+            onClose = {closeModal}
+            title="로그인이 필요한 기능입니다."
+            subText="로그인 페이지로 이동하시겠습니까?"
+            navigateToPage={navigateToPage}
+            onConfirm={null}
         />
       )}
     </FilterContainer>

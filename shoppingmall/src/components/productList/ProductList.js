@@ -40,14 +40,6 @@ const ProductList = () => {
     navigate(`/product/${productId}`, { state: { productId: productId } });
   };
 
-  if (loading) {
-    return (
-      <LoadingSpinner>
-        <ClipLoader size={150} />
-      </LoadingSpinner>
-    );
-  }
-
   return (
     <Container>
         <Wrapper>
