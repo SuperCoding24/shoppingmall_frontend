@@ -127,7 +127,7 @@ const ProductDetail = () => {
             </RightContainer>
           </ContentWrapper>
         </Content>
-        <CartButton onClick={putOnCart}>장바구니 담기</CartButton>
+        <CartButton padding=" 12px 100px" fontSize="20px"  onClick={putOnCart}>장바구니 담기</CartButton>
         {isVisible && (
           <Modal
             onClose = {closeModal}
@@ -181,6 +181,7 @@ const Wrapper = styled.div`
 const Content = styled.div`
   width: 100%;
   display: flex;
+  margin-bottom: 160px;
 `;
 
 const ContentWrapper = styled.div`
@@ -254,7 +255,7 @@ const DetailWrapper = styled.div`
   margin-top: 26px;
 `;
 
-const CartButton = styled.button`
+const CartButton = styled(BlackBtn)`
     cursor: pointer;
 `;
 
