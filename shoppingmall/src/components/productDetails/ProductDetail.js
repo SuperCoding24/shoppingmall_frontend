@@ -144,7 +144,7 @@ const ProductDetail = () => {
           <Modal
             onClose = {closeModal}
             title="장바구니에 상품이 추가되었습니다"
-            subText="확인을 누르시면 메인페이지로 이동됩니다"
+            subText="확인을 누르시면 장바구니 페이지로 이동됩니다"
             navigateToPage={navigateToPage}
             onConfirm={null}
           />
