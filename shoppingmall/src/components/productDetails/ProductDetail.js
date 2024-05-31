@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { BlackBtn } from "../../style/CommonStyles";
+import { BlackBtn , WhiteBtn } from "../../style/CommonStyles";
 
 // svg
 import leftarrow from "../../assets/leftarrow.svg";
@@ -22,8 +22,8 @@ const ProductDetail = () => {
   const [isAlreadyOnCart, setIsAlreadyOnCart] = useState(false);
   const [modalClose, setModalClose] = useState(false);
 
-  const onClose = () => {
-    setModalClose(false);
+  const closeModal = () => {
+    setIsVisible(true);
   };
 
   useEffect(() => {
@@ -124,74 +124,46 @@ const ProductDetail = () => {
                   <Description>{description}</Description>
                 </DetailWrapper>
               </InfoWrapper>
-              <BtnWrapper>
-                <BlackBtn
-                  padding="10px 120px"
-                  fontSize="18px"
-                  onClick={putOnCart}
-                >
-                  Add Cart
-                </BlackBtn>
-              </BtnWrapper>
-              {isVisible && (
-                <Modal
-                  open={isVisible}
-                  onClose={closeModal}
-                  title="로그인이 필요한 기능입니다."
-                  subText="로그인 페이지로 이동하시겠습니까?"
-                  navigateToPage={navigateToPage}
-                />
-              )}
-              {isOnCart && (
-                <Modal
-                  open={isVisible}
-                  onClose={closeModal}
-                  title="장바구니에 상품이 추가되었습니다"
-                  subText="확인을 누르시면 메인페이지로 이동됩니다"
-                  navigateToPage={navigateToPage}
-                />
-              )}
-              {isAlreadyOnCart && (
-                <Modal
-                  open={isVisible}
-                  onClose={closeModal}
-                  title="동일한 상품이 이미 장바구니에 있습니다"
-                  subText="다른 상품을 구매해 보는 건 어떨까요?"
-                  navigateToPage={navigateToPage}
-                />
-              )}
             </RightContainer>
           </ContentWrapper>
         </Content>
-        <CartButton onClick={putOnCart}>장바구니담기</CartButton>
-        {isVisible &&  (
+        <CartButton onClick={putOnCart}>장바구니 추가</CartButton>
+        {isVisible && (
           <Modal
-            open={isVisible}
-            onClose={onClose}
+            onClose = {closeModal}
             title="로그인이 필요한 기능입니다."
             subText="로그인 페이지로 이동하시겠습니까?"
             navigateToPage={navigateToPage}
+            onConfirm={null}
           />
         )}
         {isOnCart && (
-           <Modal
-            open={isVisible}
-            onClose={onClose}
+          <Modal
+            onClose = {closeModal}
             title="장바구니에 상품이 추가되었습니다"
             subText="확인을 누르시면 메인페이지로 이동됩니다"
             navigateToPage={navigateToPage}
+            onConfirm={null}
           />
-
+        )}
+        {isOnCart && (
+          <Modal
+            onClose = {closeModal}
+            title="장바구니에 상품이 추가되었습니다"
+            subText="확인을 누르시면 메인페이지로 이동됩니다"
+            navigateToPage={navigateToPage}
+            onConfirm={null}
+          />
         )}
         {isAlreadyOnCart && (
           <Modal
-          open={isVisible}
-          onClose={onClose}
-          title="동일한 상품이 이미 장바구니에 있습니다"
-          subText="다른 상품을 구매해 보는 건 어떨까요?"
-          navigateToPage={navigateToPage}
-        />
-      )}
+            onClose = {closeModal}
+            title="동일한 상품이 이미 장바구니에 있습니다"
+            subText="다른 상품을 구매해 보는 건 어떨까요?"
+            navigateToPage={navigateToPage}
+            onConfirm={null}
+          />
+        )}
       </Wrapper>
     </ContentLayout>
   );
@@ -280,6 +252,10 @@ const Line = styled.hr`
 const DetailWrapper = styled.div`
   width: 100%;
   margin-top: 26px;
+`;
+
+const CartButton = styled.button`
+    cursor: pointer;
 `;
 
 const ProductName = styled.div`
