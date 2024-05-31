@@ -23,7 +23,9 @@ const ProductDetail = () => {
   const [modalClose, setModalClose] = useState(false);
 
   const closeModal = () => {
-    setIsVisible(true);
+    setIsVisible(false);
+    setIsOnCart(false);
+    setIsAlreadyOnCart(false);
   };
 
   useEffect(() => {
@@ -70,19 +72,20 @@ const ProductDetail = () => {
                   body: JSON.stringify(cartData),
               });
 
+              const data = await response.json();
+             
+              if (data.message == "해당 물건이 이미 장바구니 내부에 있습니다.") {
+                setIsAlreadyOnCart(true);
+                setNavigateUrl("/");
+              } else if (data.cartItemId != 0) {
+                  console.log("장바구니에 삼품이 담겼습니다: " , data);
+                  setIsOnCart(true);
+                  setNavigateUrl("/cart");
+              } 
+              
               if (!response.ok) {
                   throw new Error("상품추가에 실패했습니다");
-              } else {
-                  const data = await response.json();
-                  console.log("장바구니에 삼품이 담겼습니다: " , data);
-                  if (data.cartItemId != 0) {
-                      setIsOnCart(true);
-                      setNavigateUrl("/cart");
-                  } else if (data.message === " 동일한 상품이 이미 장바구니에 있습니다.") {
-                      setIsAlreadyOnCart(true);
-                      setNavigateUrl("/");
-                  }
-              }
+              } 
           } catch (error) {
             console.error(error);
           }  
@@ -133,15 +136,6 @@ const ProductDetail = () => {
             onClose = {closeModal}
             title="로그인이 필요한 기능입니다."
             subText="로그인 페이지로 이동하시겠습니까?"
-            navigateToPage={navigateToPage}
-            onConfirm={null}
-          />
-        )}
-        {isOnCart && (
-          <Modal
-            onClose = {closeModal}
-            title="장바구니에 상품이 추가되었습니다"
-            subText="확인을 누르시면 메인페이지로 이동됩니다"
             navigateToPage={navigateToPage}
             onConfirm={null}
           />

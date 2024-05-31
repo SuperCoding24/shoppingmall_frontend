@@ -14,7 +14,7 @@ const ProducFilter = ( {setSort }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const closeModal = () => {
-    setIsVisible(true);
+    setIsVisible(false);
   };
 
   const checkLogin = () => {
