@@ -1,8 +1,8 @@
 {
   "rewrites": [
-    { 
-      path: "/",
-      element: Home(),
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
